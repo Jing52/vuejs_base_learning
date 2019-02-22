@@ -2,23 +2,13 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>vue中的set方法</title>
+		<script src="../../js/vue/vue.js"></script>
 	</head>
 	<body>
 		<div id="app">
-			<!--<div v-for="(item, index) of list" :key="item.id">
-				{{item}}----{{index}}
-			</div>-->
-			<!--<template v-for="(item, index) of list" :key="item.id">
-				<div>
-					{{item.text}}----{{index}}
-				</div>
-				<span>
-					{{item.text}}
-				</span>
-			</template>-->
-			<div v-for="(item,key,index) of userInfo">
-				{{item}}-------{{key}}--------{{index}}
+			<div v-for="(item,index) of list">
+				{{item}}
 			</div>
 		</div>
 		<script>
@@ -29,16 +19,8 @@
 					list: [1,2,3,4]
 				}
 			})
-			//1，vm.userInfo = {
-			//			name: "Dell",
-			//			age: 29,
-			//			gender: "male",
-			//			salary: "secret"
-			//		}
-			//2，vue的set方法向对象添加值
-			//Vue.set(vm.userInfo,"address","beijing")
-			//3, 实例
-			//vm.$set(vm.userInfo,"address","beijing")
+			//1,Vue.set(vm.list,1,5)
+			//2,vm.$set(vm.list,1,5)
 		</script>
 	</body>
 </html>
