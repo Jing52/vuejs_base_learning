@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue中的条件渲染</title>
+		<script src="../../js/vue/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--<div	 v-if="show">{{message}}</div>//从DOM节点移除-->
+			<!--<div	 v-show="show">{{message}}</div>//依然存在；性能相对高-->
+			<div	 v-if="show">{{message}}</div>
+			<div v-else>Bye World</div>
+		</div>
+		<script>
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					show: false,
+					message: "Hello World"
+				}
+			})
+		</script>
+	</body>
+</html>
