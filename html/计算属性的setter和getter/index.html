@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>计算属性的setter和getter</title>
+		<script src="../../js/vue/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{fullName}}
+		</div>
+		<script>
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					firstName: "Dell",
+					lastName: "Lee"
+				},
+				//计算属性   与方法相比:有缓存，性能更高；与侦听器相比：代码更简洁
+				computed: {
+					fullName:  {
+						get: function(){
+							return this.firstName + " " + this.lastName;
+						},
+						set: function(value){
+							var arr = value.split(" ");
+							this.firstName = arr[0];
+							this.lastName = arr[1];
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
