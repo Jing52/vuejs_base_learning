@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue父子组件的数据传递</title>
+		<script src="../../js/vue/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<counter ref="one" :count="0" @inc="handleIncrease"></counter>
+			<counter ref="two" :count="1" @inc="handleIncrease"></counter>
+			<div>{{total}}</div>
+		</div>
+		<script>
+			var counter = {
+				props: ['count'],//接收父组件传递过来的数据
+				data: function() {
+					return {
+						number: this.count
+					}
+				},
+				template: '<div @click="handleClick">{{number}}</div>',
+				methods: {
+					handleClick: function(){
+						this.number ++;
+						this.$emit('inc',1);
+					}
+				}
+			}
+			//单向数据流：父组件可以随意的向子组件传递参数
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					total: 1
+				},
+				components: {
+					counter: counter
+				},
+				methods: {
+					handleIncrease: function(step) {
+						this.total += step;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
