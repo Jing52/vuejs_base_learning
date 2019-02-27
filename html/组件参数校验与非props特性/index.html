@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件参数校验与非props特性</title>
+		<script src="../../js/vue/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--{{fullName()}}-->
+			{{fullName}}
+		</div>
+		<script>
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					firstName: "Dell",
+					lastName: "Lee",
+					age: 28
+				},
+//				//侦听器
+//				watch: {
+//					firstName: function() {
+//						console.log("计算一次");
+//						this.fullName = this.firstName + "" + this.lastName;
+//					},
+//					lastName: function() {
+//						console.log("计算一次");
+//						this.fullName = this.firstName + "" + this.lastName;
+//					}
+//				}
+//				//方法
+//				methods: {
+//					fullName: function(){
+//						console.log("计算一次");
+//						return this.firstName + "" + this.lastName;
+//					}
+//				}
+				//计算属性   与方法相比:有缓存，性能更高；与侦听器相比：代码更简洁
+				computed: {
+					fullName: function(){
+						console.log("计算一次");
+						return this.firstName + "" + this.lastName;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
