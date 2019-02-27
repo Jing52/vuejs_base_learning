@@ -6,11 +6,44 @@
 		<script src="../../js/vue/vue.js"></script>
 	</head>
 	<body>
-		<div id="app">
+		<!--<div id="app">
+			<child @click="handleClick"></child>//自定义的点击事件，需要子组件触发外围事件
 		</div>
 		<script>
+			Vue.component('child', {
+				template: '<div @click="handleChildClick">Child</div>',
+				methods: {
+					handleChildClick: function(){
+						alert("child click");
+						this.$emit('click');
+					}
+				}
+			})
 			var vm = new Vue({
-				el: "#app"
+				el: "#app",
+				methods: {
+					handleClick: function(){
+						alert("click"); 
+					}
+				}
+			})
+		</script>-->
+		<div id="app">
+			<child @click.native="handleClick"></child>
+		</div>
+		<script>
+			Vue.component('child', {
+				template: '<div>Child</div>'
+			})
+			
+			var vm = new Vue({
+				el: "#app",
+				methods: {
+					//原生点击事件
+					handleClick: function() {
+						alert("click"); 
+					}
+				}
 			})
 		</script>
 	</body>
