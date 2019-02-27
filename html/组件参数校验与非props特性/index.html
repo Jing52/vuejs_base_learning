@@ -7,42 +7,29 @@
 	</head>
 	<body>
 		<div id="app">
-			<!--{{fullName()}}-->
-			{{fullName}}
+			<child></child>
 		</div>
 		<script>
-			var vm = new Vue({
-				el: "#app",
-				data: {
-					firstName: "Dell",
-					lastName: "Lee",
-					age: 28
-				},
-//				//侦听器
-//				watch: {
-//					firstName: function() {
-//						console.log("计算一次");
-//						this.fullName = this.firstName + "" + this.lastName;
-//					},
-//					lastName: function() {
-//						console.log("计算一次");
-//						this.fullName = this.firstName + "" + this.lastName;
-//					}
-//				}
-//				//方法
-//				methods: {
-//					fullName: function(){
-//						console.log("计算一次");
-//						return this.firstName + "" + this.lastName;
-//					}
-//				}
-				//计算属性   与方法相比:有缓存，性能更高；与侦听器相比：代码更简洁
-				computed: {
-					fullName: function(){
-						console.log("计算一次");
-						return this.firstName + "" + this.lastName;
+			Vue.component('child',{
+				props: {
+					content: {
+						type:String,
+//						required:false,//必填
+//						default:'default value'//默认值
+						validator: function(value) {
+							return value.length>5;//字符串长度
+						}
 					}
-				}
+					//[String,Number]
+				},
+				template: '<div>{{content}}</div>'
+			})
+			//非props特性：
+			//如果定义了非props，子组件不可以使用父组件声明的内容content
+			//props特性会显示在非props特性的最外层的DOM上
+			
+			var vm = new Vue({
+				el: "#app"
 			})
 		</script>
 	</body>
