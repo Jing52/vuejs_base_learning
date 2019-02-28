@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>在vue中使用插槽</title>
+		<script src="../../js/vue/vue.js"></script>
+	</head>
+	<body>
+		<!--<div id="app">
+			<child content='<p>Dell</p><p>Dell</p><p>Dell</p><p>Dell</p><p>Dell</p>'></child>
+		</div>
+		<script>
+			Vue.component('child', {
+				props: ['content'],
+				template: '<div><p>hello</p><div v-html="this.content"></div></div>'
+			})
+			
+			var vm = new Vue({
+				el: "#app"
+			})
+		</script>-->
+		<div id="app">
+			<child>
+				<div class="header" slot="header">header</div>
+				<div class="footer" slot="footer">footer</div>
+			</child>
+		</div>
+		<script>
+			Vue.component('child', {
+				template: '<div><slot name="header"></slot><div class="content">content</div><slot name="footer"></slot></div>'
+			})
+			
+			var vm = new Vue({
+				el: "#app"
+			})
+		</script>
+	</body>
+</html>
