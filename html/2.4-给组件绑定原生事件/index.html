@@ -13,7 +13,7 @@
 			Vue.component('child', {
 				template: '<div @click="handleChildClick">Child</div>',
 				methods: {
-					handleChildClick: function(){
+					handleChildClick: function() {
 						alert("child click");
 						this.$emit('click');
 					}
@@ -22,7 +22,7 @@
 			var vm = new Vue({
 				el: "#app",
 				methods: {
-					handleClick: function(){
+					handleClick: function() {
 						alert("click"); 
 					}
 				}
