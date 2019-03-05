@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>在vue中同时使用过滤和动画</title>
+		<script src="../../js/vue/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../css/animate/animate.css" />
+		<style>
+			.fade-enter,
+			.fade-leave-to {
+				opacity: 0;
+			}
+			.fade-enter-active,
+			.fade-leave-active {
+				transition: opacity 3s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<transition 
+				<!--type="transtion"--> 
+				name = "fade"
+				:duration = "{ enter:5000, leave:10000}"
+				appear
+				enter-active-class = "animated swing fade-enter-active" 
+				leave-active-class = "animated shake fade-leave-active"
+				appear-active-class = "animated swing"
+			>
+				<div v-if="show">Hello World</div>
+			</transition>
+			<button @click="handleClick">切换</button>
+		</div>
+		<script>
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					show: true
+				},
+				methods: {
+					handleClick: function() {
+						this.show = !this.show;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
