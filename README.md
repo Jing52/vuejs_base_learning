@@ -1,3 +1,3 @@
-# where-to-travel_vue_learning
+# vuejs_base_learning
 
-## 爸爸去哪儿网站开发学习
+## Vuejs的基础学习
